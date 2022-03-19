@@ -15,13 +15,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookies);
-//app.use(Auth);
+app.use(Auth.createSession);
 
 
 
 app.get('/',
   (req, res) => {
-    console.log('in req body');
     res.render('index');
   });
 
@@ -93,7 +92,7 @@ app.get('/login', (req, res) => {
   //   //   res.render('/');
   //   // }
   // }
-  console.log(res);
+  // console.log(res);
   res.render('login');
 });
 
